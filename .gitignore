@@ -13,6 +13,7 @@ pom.xml.asc
 .nrepl-port
 .cpcache/
 ./shadow-cljs/
+./cljs/
 *.iml
 .idea/
 /public/js/compiled/

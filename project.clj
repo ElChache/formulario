@@ -1,4 +1,4 @@
-(defproject formulario "0.0.0"
+(defproject formulario "0.0.1"
   :description "A clojurescript library to ease the pain of forms in re-frame"
   :url ""
   :source-paths ["src"]

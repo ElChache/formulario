@@ -1,10 +1,24 @@
 {
+  "name": "formulario",
+  "version": "0.0.1",
+  "description": "A clojurescript library to ease the pain of forms in re-frame",
+  "homepage": "https://github.com/ElChache/formulario",
+  "bugs": {
+    "url": "https://github.com/ElChache/formulario/issues",
+    "email": "davidcerezoinigo@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name" : "David Cerezo Inigo",
+    "email" : "davidcerezoinigo@gmail.com"
+  },
   "scripts": {
     "deps": "yarn install",
     "watch": "shadow-cljs watch app;",
     "release": "shadow-cljs release app;",
-    "server": "shadow-cljs server;",
-    "clean": "rm -rf target; rm -rf public/js/compiled"
+    "clean": "rm -rf target; rm -rf public/js/compiled",
+    "test": "yarn shadow-cljs release test && node .cljs/test.js",
+    "test:watch": "yarn shadow-cljs watch test"
   },
   "dependencies": {
     "create-react-class": "15.6.3",

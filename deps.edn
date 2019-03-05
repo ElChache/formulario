@@ -1,18 +1,15 @@
-{:paths ["src"]
- :deps  {binaryage/devtools          {:mvn/version "0.9.10"}
-         org.clojure/clojurescript   {:mvn/version "1.10.520"}
-         metosin/spec-tools          {:mvn/version "0.8.2"}
-         reagent                     {:mvn/version "0.8.1"}
-         re-frame                    {:mvn/version "0.10.6"}}
+{:paths   ["src"]
+ :deps    {binaryage/devtools        {:mvn/version "0.9.10"}
+           org.clojure/clojurescript {:mvn/version "1.10.520"}
+           metosin/spec-tools        {:mvn/version "0.8.2"}
+           reagent                   {:mvn/version "0.8.1"}
+           re-frame                  {:mvn/version "0.10.6"}}
 
  :aliases {:local {:extra-paths ["dev"]
-                   :extra-deps  {org.clojure/clojure        {:mvn/version "1.10.0"}
-                                 org.clojure/clojurescript  {:mvn/version "1.10.520"}
-                                 org.clojure/test.check     {:mvn/version "0.10.0-alpha3" :exclusions [org.clojure/clojure]}
-                                 orchestra                  {:mvn/version "2018.12.06-2"}
-                                 day8.re-frame/re-frame-10x {:mvn/version "0.3.6"}}}
+                   :extra-deps  {org.clojure/clojure       {:mvn/version "1.10.0"}
+                                 org.clojure/clojurescript {:mvn/version "1.10.520"}
+                                 orchestra                 {:mvn/version "2018.12.06-2"}}}
            :test  {:extra-paths ["test"]
                    :extra-deps  {olical/cljs-test-runner {:mvn/version "3.5.0"}
-                                 humane-test-output      {:git/url "https://github.com/pjstadig/humane-test-output"
-                                                          :sha     "92a31187593ef6a827a6840ee0259067364398ba"}
-                                 unbroken-promises       {:mvn/version "0.1.9"}}}}}
+                                 org.clojure/test.check  {:mvn/version "0.10.0-alpha3" :exclusions [org.clojure/clojure]}
+                                 pjstadig/humane-test-output      {:mvn/version "0.9.0"}}}}}
