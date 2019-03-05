@@ -1,0 +1,19 @@
+;; shadow-cljs configuration
+{:source-paths ["src"]
+
+ ;; set an nrepl port for connection to a REPL.
+ :nrepl        {:port 8777}
+
+ :builds
+               {:app {:target     :browser
+                      :output-dir "public/js/compiled"
+                      :asset-path "/js/compiled"
+
+                      :modules
+                                  {:main
+                                   {:entries [formulario.validation]}}
+
+                      :devtools
+                      ;; before live-reloading any code call this function
+                                  {:preloads [devtools.preload]}
+                      }}}
