@@ -11,8 +11,9 @@ First you need to initialize the library, optionally passing a database spec if 
 the database state on every event. That will register the events with re-frame.
 
 ``` clojure
-(:require [formulario.events :as formulario
-           [my-app.db :as db]]
+(ns my-app.core
+  (:require [formulario.events :as formulario
+            [my-app.db :as db]]))
            
 (formulario/init ::db/db-spec)
 ```
