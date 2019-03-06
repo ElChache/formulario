@@ -14,8 +14,8 @@
   },
   "scripts": {
     "deps": "yarn install",
-    "watch": "shadow-cljs watch app;",
-    "release": "shadow-cljs release app;",
+    "watch": "shadow-cljs watch local;",
+    "release": "shadow-cljs release prod;",
     "clean": "rm -rf target; rm -rf public/js/compiled",
     "test": "yarn shadow-cljs release test && node .cljs/test.js",
     "test:watch": "yarn shadow-cljs watch test"

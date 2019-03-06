@@ -11,33 +11,35 @@ the database state on every event. That will register the events with re-frame.
 ``` clojure
 (:require [formulario.events :as formulario
            [my-app.db :as db]]
+           
 (formulario/init ::db/db-spec)
 ```
 
 ## Forms initialization
 Forms `:validations` and `:value` need to be placed on the db initial value on key `:forms`. 
 
-`:validations` is a map of functions with the following signature:
-```clojure
-(fn [input-value form-value])
-```
-Form value is a map with the value of the form.
+`:validations` is a map of functions with the signature `[input-value form-value]` 
+and `:value` is a map with the value of the form
 
 ``` clojure
+;;;;;;;;;;;;;;;;;;;;;;;
+;; MY FORM NAMESPACE ;;
+;;;;;;;;;;;;;;;;;;;;;;;
 (ns my-app.my-form)
 
 (def id ::my-form)
+
 (def validations
-  {:name #(when (clojure.string/blank? %)
-            "The name can't be empty")
+  {:name       #(when (clojure.string/blank? %)
+                 "The name can't be empty")
    :start-date (fn [date {:keys [end-date]}]
                  (when (> (.getTime date) (.getTime end-date))
                    "Start date must be lower than end date"))
    :end-date   (fn [date {:keys [start-date]}]
                  (when (< (.getTime date) (.getTime start-date))
                     "End date must be greater than end date"))
-   :age #(when (< % 18)
-            "You need to be overage")}
+   :age         #(when (< % 18)
+                  "You need to be overage")}
 
 (def initial-value
   {:age 18})
@@ -45,7 +47,10 @@ Form value is a map with the value of the form.
 (def form {:validations validations
            :value intial-value}
 
-(ns my-app-db
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RE-FRAME DB NAMESPACE ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(ns my-app.db
   :require [my-app.my-form :as my-form])
   
 (def db
@@ -180,5 +185,4 @@ The following example shows a very simple form that shows errors when the form i
 
 Copyright © 2019
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT License

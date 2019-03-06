@@ -1,5 +1,6 @@
 (defproject formulario "0.0.1"
   :description "A clojurescript library to ease the pain of forms in re-frame"
+  :license "MIT"
   :url ""
   :source-paths ["src"]
   :test-paths []
