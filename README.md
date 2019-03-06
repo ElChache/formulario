@@ -1,5 +1,7 @@
 # Formulario
 
+[![Clojars Project](https://img.shields.io/clojars/v/formulario.svg)](https://clojars.org/formulario)
+
 Formulario is a library to ease the pain of forms in re-frame.
 
 Formulario allows to register forms and access them through events and subscriptions.
