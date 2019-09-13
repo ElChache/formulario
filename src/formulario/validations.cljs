@@ -16,3 +16,19 @@
       (when (and (not (nil? x))
                  (not (clojure.core/pos-int? x)))
         error-message))))
+
+(defn email?
+  ([] (email? "Not a valid email"))
+  ([error-message]
+   (fn [x]
+     (let [re #"^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"]
+       (when-not (re-matches re (or x ""))
+         error-message)))))
+
+(defn string-length
+  ([min-chars]
+   (string-length min-chars (str "It must have a minimum of " min-chars " characters.")))
+  ([min-chars message]
+   (fn [x]
+     (when-not (>= (count x) min-chars)
+       message))))

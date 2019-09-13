@@ -15,6 +15,11 @@
   [id k]
   @(rf/subscribe [::form-s/input-error id k]))
 
+(defn input-not-pristine-error
+  "Same as input-error but only returns the error if the field is not pristine"
+  [id k]
+  @(rf/subscribe [::form-s/input-not-pristine-error id k]))
+
 (defn input-valid?
   "Returns a boolean indicating if the input passes the validation
   The output could be used to hide or show the error on the input,
@@ -31,15 +36,19 @@
 (defn form-value
   "Returns the value of all the inputs in the form as a map, where the keys are the keys used on the
   on-change function or the :lib.form.events/set-input-val event"
-  [id k]
-  @(rf/subscribe [::form-s/form-value id k]))
+  [id]
+  @(rf/subscribe [::form-s/form-value id]))
 
 (defn on-change
   "Syntactic sugar function for the form inputs.
-  The output shoud be used as the value for the on-change event listener of the inputs."
-  [id k]
-  #(rf/dispatch [::form-e/set-input-val id k
-                 (-> % (.-target) (.-value))]))
+  The output should be used as the value for the on-change event listener of the inputs."
+  ([id path]
+    (on-change id path nil))
+  ([id path form-value-atom]
+   (fn [e]
+     (let [value (-> e (.-target) (.-value))]
+       (when form-value-atom (swap! form-value-atom assoc-in path value))
+       (rf/dispatch [::form-e/set-input-val id path value])))))
 
 (defn on-submit
   "Syntactic sugar function for submitting the forms.
@@ -47,6 +56,7 @@
   [id f]
   (fn [e]
     (.preventDefault e)
+    (js/console.log "form-valid?:" (form-valid? id) ", id:" id)
     (when (form-valid? id)
       (let [val @(rf/subscribe [::form-s/form-value id])]
         (f val e)))))
