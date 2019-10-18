@@ -1,6 +1,6 @@
 {
   "name": "formulario",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A clojurescript library to ease the pain of forms in re-frame",
   "homepage": "https://github.com/ElChache/formulario",
   "bugs": {
@@ -24,6 +24,6 @@
     "create-react-class": "15.6.3",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "shadow-cljs": "2.8.14"
+    "shadow-cljs": "2.8.40"
   }
 }
