@@ -12,8 +12,8 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
-./shadow-cljs/
-./cljs/
+.shadow-cljs/
+.cljs/
 *.iml
 .idea/
 /public/js/compiled/

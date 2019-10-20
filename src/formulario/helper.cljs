@@ -43,11 +43,15 @@
   "Syntactic sugar function for the form inputs.
   The output should be used as the value for the on-change event listener of the inputs."
   ([id path]
-    (on-change id path nil))
+   (on-change id path nil))
   ([id path form-value-atom]
    (fn [e]
-     (let [value (-> e (.-target) (.-value))]
-       (when form-value-atom (swap! form-value-atom assoc-in path value))
+     (let [target (.-target e)
+           value (.-value target)
+           value* (case (.-type target)
+                    "number" (js/Number value)
+                    value)]
+       (when form-value-atom (swap! form-value-atom assoc-in path value*))
        (rf/dispatch [::form-e/set-input-val id path value])))))
 
 (defn on-submit
