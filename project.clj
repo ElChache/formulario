@@ -1,4 +1,4 @@
-(defproject formulario "0.0.4"
+(defproject formulario "0.0.5"
   :description "A clojurescript library to ease the pain of forms in re-frame"
   :license "MIT"
   :url ""
