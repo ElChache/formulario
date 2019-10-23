@@ -1,6 +1,6 @@
 (ns formulario.validations
   (:require [formulario.validations.fns :as fns])
-  (:refer-clojure :exclude [pos-int? pos?]))
+  (:refer-clojure :exclude [pos-int? pos? nat-int?]))
 
 (defn required?
   ([] (required? "This field is required"))
