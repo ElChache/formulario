@@ -1,6 +1,6 @@
 (ns formulario.validations
   (:require [formulario.validations.fns :as fns])
-  (:refer-clojure :exclude [pos-int?]))
+  (:refer-clojure :exclude [pos-int? pos?]))
 
 (defn required?
   ([] (required? "This field is required"))
@@ -8,11 +8,32 @@
    (fn [x] (when (fns/empty? x) error-message))))
 
 (defn pos-int?
-  ([] (pos-int? "Not a positive number"))
+  ([] (pos-int? "Not a positive integer"))
   ([error-message]
     (fn [x]
       (when-not (clojure.core/pos-int? x)
         error-message))))
+
+(defn pos?
+  ([] (pos? "Not a positive number"))
+  ([error-message]
+   (fn [x]
+     (when-not (fns/pos? x)
+       error-message))))
+
+(defn nat-int?
+  ([] (nat-int? "Not a natural integer"))
+  ([error-message]
+   (fn [x]
+     (when-not (clojure.core/nat-int? x)
+       error-message))))
+
+(defn not-neg-number?
+  ([] (not-neg-number? "The number must be positive, or zero"))
+  ([error-message]
+   (fn [x]
+     (when-not (fns/not-neg-number? x)
+       error-message))))
 
 (defn email?
   ([] (email? "Not a valid email"))
