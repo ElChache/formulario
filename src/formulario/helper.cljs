@@ -52,7 +52,7 @@
                     "number" (js/Number value)
                     value)]
        (when form-value-atom (swap! form-value-atom assoc-in path value*))
-       (rf/dispatch [::form-e/set-input-val id path value])))))
+       (rf/dispatch [::form-e/set-input-val id path value*])))))
 
 (defn on-submit
   "Syntactic sugar function for submitting the forms.
