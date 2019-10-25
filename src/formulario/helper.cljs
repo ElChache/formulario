@@ -51,7 +51,7 @@
            value* (case (.-type target)
                     "number" (js/Number value)
                     value)]
-       (when form-value-atom (swap! form-value-atom assoc-in path value*))
+       (when form-value-atom (swap! form-value-atom assoc-in path value))
        (rf/dispatch [::form-e/set-input-val id path value*])))))
 
 (defn on-submit
