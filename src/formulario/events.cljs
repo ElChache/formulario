@@ -25,7 +25,7 @@
     (re/reg-event-db
       ::unset-pristine mw
       (fn [db [form-id]]
-        (assoc-in db [:forms form-id :meta :form :force-not-pristine?] true)))
+        (assoc-in db [:forms form-id :meta :force-not-pristine?] true)))
 
     (re/reg-event-db
       ::reset-form mw

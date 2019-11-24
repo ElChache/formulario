@@ -60,7 +60,6 @@
   [id f]
   (fn [e]
     (.preventDefault e)
-    (js/console.log "form-valid?:" (form-valid? id) ", id:" id)
     (when (form-valid? id)
       (let [val @(rf/subscribe [::form-s/form-value id])]
         (f val e)))))
