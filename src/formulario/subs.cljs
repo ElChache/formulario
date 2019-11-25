@@ -54,8 +54,8 @@
   (fn [[_ form-id]]
     (re/subscribe [::form-meta form-id]))
   (fn [form-meta _]
-    (not (or (get-in form-meta [:form :not-pristine?])
-             (get-in form-meta [:form :force-not-pristine?])))))
+    (not (or (get form-meta :not-pristine?)
+             (get form-meta :force-not-pristine?)))))
 
 (re/reg-sub
   ::input-error
