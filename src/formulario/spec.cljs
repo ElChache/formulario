@@ -27,6 +27,7 @@
                                                    :number number?
                                                    :boolean boolean?
                                                    :collection coll?
+                                                   :keyword keyword?
                                                    :map ::value))))
 
 (s/def ::form  (s/keys :req-un [::validations ::value]
